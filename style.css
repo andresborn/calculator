@@ -1,0 +1,95 @@
+:root {
+  --purple: #3d405b;
+  --orange: #e07a5f;
+  --green: #81b29a;
+  --yellow: #f2cc8f;
+  --white: #f4f1de;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  color: var(--purple);
+  font-family: "Courier New", Courier, monospace;
+  background-color: var(--yellow);
+  height: 100%;
+  display: flex;
+  font-size: 40px;
+  font-weight: bold;
+}
+
+* {
+  box-sizing: border-box; /* this makes the padding and margin to be included in the final size of the box */
+}
+
+.container {
+  display: flex;
+  align-items: center;
+}
+
+.calculator {
+  height: 620px;
+  width: 410px;
+  padding: 1px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -300px 0 0 -225px;
+  display: grid;
+  border: solid;
+  background-color: var(--purple);
+}
+
+.screen {
+  height: 160px;
+  width: 390px;
+  display: flex;
+  flex-direction: column;
+  border: solid;
+  align-self: center;
+  margin-left: 5px;
+  background-color: var(--orange);
+}
+#input {
+  text-align: end;
+  width: 400px;
+  margin-top: 40px;
+  padding-right: 20px;
+}
+#output {
+  text-align: end;
+  width: 400px;
+  margin-top: 10px;
+  padding-right: 20px;
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.operators {
+  height: 85px;
+  width: 100px;
+  border-radius: 5px;
+  background-color: var(--green);
+  font-weight: bolder;
+  color: var(--white);
+  font-size: 30px;
+}
+
+.numbers {
+  height: 85px;
+  width: 100px;
+  border-radius: 5px;
+  background-color: var(--green);
+  font-weight: bolder;
+  color: var(--white);
+  font-size: 30px;
+}
+
+#num0 {
+}
+#equals {
+  width: 300px;
+}
