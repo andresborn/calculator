@@ -14,8 +14,6 @@ body {
   background-color: var(--yellow);
   height: 100%;
   display: flex;
-  font-size: 40px;
-  font-weight: bold;
 }
 
 * {
@@ -37,6 +35,7 @@ body {
   margin: -300px 0 0 -225px;
   display: grid;
   border: solid;
+  border-radius: 10px;
   background-color: var(--purple);
 }
 
@@ -49,6 +48,9 @@ body {
   align-self: center;
   margin-left: 5px;
   background-color: var(--orange);
+  font-size: 40px;
+  font-weight: bold;
+  border-radius: 5px;
 }
 #input {
   text-align: end;
@@ -68,14 +70,14 @@ body {
   flex-wrap: wrap;
 }
 
-.operators {
+.keys {
   height: 85px;
   width: 100px;
   border-radius: 5px;
   background-color: var(--green);
   font-weight: bolder;
   color: var(--white);
-  font-size: 30px;
+  font-size: 25px;
 }
 
 .numbers {
@@ -86,6 +88,16 @@ body {
   font-weight: bolder;
   color: var(--white);
   font-size: 30px;
+}
+
+.operators {
+  height: 85px;
+  width: 100px;
+  border-radius: 5px;
+  background-color: var(--green);
+  font-weight: bolder;
+  color: var(--white);
+  font-size: 25px;
 }
 
 #num0 {
