@@ -1,5 +1,7 @@
 let output = document.querySelector('#output');
 let result = 0;
+
+//Math functions
     function sum (a,b) {
         result = (Math.round((a + b) * 100) / 100);
         return result;
@@ -19,8 +21,7 @@ let result = 0;
         return result;
     }}
 
-    //Create a new function operate that takes an operator and 2 numbers and then calls one of the above functions on the numbers.
-
+//Operate funtion takes an operator and 2 numbers and calls a math function
     function operate(a,b,operator) {
         if (!(result === 0)) {
             if (operator === "+") {output.textContent = sum(result,b)}
@@ -33,41 +34,49 @@ let result = 0;
             if (operator === "-") {output.textContent = subtract(a,b)}
             if (operator === "*") {output.textContent = multiply(a,b)}
             if (operator === "/") {output.textContent = divide(a,b)}
-    }
-    console.log(`firstValue: ${firstValue}`)
-    console.log(`selectedOperator: ${selectedOperator}`)
-    console.log(`secondValue: ${secondValue}`)
-    console.log(`result: ${result}`)
-    }
+    };
+}
+    
+//Functions to display on screen clicked buttons
+let value = [];
+const input = document.querySelector('#input');
 
-    //Functions that populate the display when you click the number buttons… Store the ‘display value’ in a variable somewhere for use in the next step.
-
-    let value = [];
-    const input = document.querySelector('#input');
-
-    const numbers = Array.from(document.querySelectorAll('.numbers'));
+const numbers = Array.from(document.querySelectorAll('.numbers'));
+    
     numbers.forEach(number => {
         number.addEventListener('click', () => {
-            value.push(number.textContent); // add number to value array
-            input.textContent = value.join(''); // display on screen
+            if (value.length > 14) { //if number is too big for the screen
+                operator.removeEventListener();
+            }
+            else {
+                value.push(number.textContent); // add number to value array
+                input.textContent = value.join(''); // display on screen
+            }
         })
     });
 
-    let firstValue = [];
-    let secondValue = [];
-    let selectedOperator = '';
-    const operators = Array.from(document.querySelectorAll('.operators'));
+let firstValue = [];
+let secondValue = [];
+let selectedOperator = '';
+
+const operators = Array.from(document.querySelectorAll('.operators'));
+    
     operators.forEach(operator => {
         operator.addEventListener('click', () => {
-            firstValue = value.join(''); // save first value
-            selectedOperator = operator.textContent; // save operator used
-            value.push(selectedOperator); // push operator to value array
-            input.textContent = value.join(''); // display operator in value
+            if (value.length > 14) { //if number is too big for the screen
+                operator.removeEventListener();
+            }
+            else {
+                firstValue = value.join(''); // save first value
+                selectedOperator = operator.textContent; // save operator used
+                value.push(selectedOperator); // push operator to value array
+                input.textContent = value.join(''); // display operator in value
+            }
         })
     });
-    
 
-    const equals = document.querySelector('#equals');
+//Calls operator function with equals button
+const equals = document.querySelector('#equals');
 
     equals.addEventListener('click', () => {
         secondValue = value                     // save second value
@@ -78,7 +87,8 @@ let result = 0;
         operate(firstValue, secondValue, selectedOperator);
     })
 
-    const clearButton = document.querySelector('#clear');
+const clearButton = document.querySelector('#clear');
+
     clearButton.addEventListener('click', () => {
         value = [];
         firstValue = [];
@@ -89,6 +99,21 @@ let result = 0;
         output.textContent = ' ';
     })
     
+const deleteButton = document.querySelector('#delete');
+    
+    deleteButton.addEventListener('click', () => {
+        value.pop();
+        input.textContent = value.join('');
+    })
 
+const periodButton = document.querySelector('#period');
     
-    
+    periodButton.addEventListener('click', () => {
+        if (!value.includes('.')) {
+            value.push('.');
+            input.textContent = value.join('');
+        }
+        else {
+            periodButton.removeEventListener();
+        };
+    });
